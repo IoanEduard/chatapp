@@ -1,0 +1,44 @@
+<div *ngIf="visible" class="row justify-content-center">
+  <div class="col-sm-8">
+    <div class="text-white">
+      <div #scrollMe [scrollTop]="scrollMe.scrollHeight" class="hideScrollbar private-messages__wrapper">
+        <div *ngFor="let message of privateMessages" class="private-message__item">
+          <img src="{{message.img}}" alt="" height="30" width="30" class="private-message__img">
+          <span class="private-message__message">{{message.message}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <button type="button" class="btn btn-primary active chat-tab__main" (click)="selectMain()">Main Room</button>
+      <div *ngFor="let item of componentRefTabs; let i = index" class="chat-tab__item">
+        <button type="button" class="chat-tab__tabName"
+          [ngStyle]="{'background-color': newMessage ? '#198754' : '#051F34' }" (click)="openTab(i)"
+         >{{item.component.instance.tabName}}
+        </button>
+
+        <button type="button" class="btn btn-secondary active chat-tab__tabDestroy"
+          [ngStyle]="{'background-color': newMessage ? '#198754' : '#051F34' }" (click)="destroyTab(i)">x</button>
+      </div>
+    </div>
+    <div class="text-white">
+      <app-message-box (messageEvent)="sendPrivateMessage($event)"></app-message-box>
+    </div>
+  </div>
+
+  <div class="col-sm-2">
+    <div class="text-white" style="height:500px;background-color:#037EDC;padding:10px;">
+      <p style="display:flex;">{{senderName}} </p>
+      <p style="display:flex;">{{tabName}} </p>
+    </div>
+
+    <button class="btn btn-dark full-width-btn">Create Group</button>
+    <div class="row justify-content-left">
+      <div class="col-sm-12 display-inline-flex">
+        <button class="btn btn-success full-width-btn" *ngIf="!(authService.isLoggedIn$ | async)"
+          (click)="openLogin()">Login</button>
+        <p class="px-2 full-width-btn" *ngIf="authService.isLoggedIn$ | async" (click)="logout()">Logout</p>
+      </div>
+    </div>
+  </div>
+
+</div>

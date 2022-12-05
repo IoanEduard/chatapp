@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> -->
+</div>
+<div class="modal-body">
+    <form>
+        <div class="mb-3">
+            <img src="{{photo}}" height="30" width="30" />
+            <input type="text" placeholder="Edit your name" [(ngModel)]="username"
+                [ngModelOptions]="{standalone: true}">
+            <div>
+                <p>Avatars</p>
+                <div *ngFor="let image of images">
+                    <img src="{{image.name}}" alt="" height="30" width="30" style="margin-top:10px;margin-left:10px"
+                        (click)="updateImage(image.name)">
+                </div>
+            </div>
+            <div *ngIf="authService.isLoggedIn$ | async">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <input type="file" (change)="uploadImage($event)">
+                </form>
+                <label>Update Image</label>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="saveProfile()">Save</button>
+</div>

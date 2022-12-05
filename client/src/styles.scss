@@ -1,0 +1,168 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@ctrl/ngx-emoji-mart/picker';
+@import "~font-awesome/scss/font-awesome";
+
+body {
+    background-color: #D2E0EB !important;
+    // color: black !important;
+}
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.display-flex {
+    display: flex;
+  }
+  
+  .display-inline-flex {
+    display:inline-flex;
+  }
+
+  .emoji-btn {
+    display: inline-block;
+    font-size: 25px;
+    background-color: transparent;
+    border-color: transparent;
+  }
+  
+  .emoji-list {
+    display: inline-flex;
+    font-size:30px;padding-right:14px;
+  }
+  
+  .private-messages__wrapper {
+    height: 500px;
+    overflow-y: scroll;
+    background-color: #037EDC;
+  }
+  
+  .private-message__item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .private-message__img {
+    margin-top: 10px;
+    margin-left: 10px
+  }
+  
+  .chat-tab__main {
+    border-radius: 0 !important;
+    border-color: transparent !important;
+  }
+  
+  .chat-tab__item {
+    display: inline-block;
+  }
+  
+  .chat-tab__tabName {
+    border-radius: 0 !important;
+    border-color: transparent !important;
+    color:white;
+    line-height: inherit;
+    // padding-left: 0;
+    // padding-right: 2;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+  }
+  
+  .chat-tab__tabDestroy {
+    border-radius: 0 !important;
+    border-color: transparent !important;
+    padding-left: 0;
+    // padding-right: 2;
+    vertical-align: top;
+  }
+  
+  .private-message__form {
+    align-items: center;
+    display: flex;
+  }
+  
+  .private_message__textarea {
+    display: inline-block;
+    resize: none;
+  }
+  
+  .private-message__submit {
+    align-self: middle;
+  }
+  
+  .hideScrollbar::-webkit-scrollbar {
+    // chrome opera safari
+    display: none;
+  }
+  
+  .hideScrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+  
+  .full-width-btn {
+    width: 100%;
+    border-radius: 0% !important;
+  }
+  
+  .private_message__textarea {
+    display: inline-block;
+    resize: none;
+    width: 90%;
+    vertical-align: top;
+    height: 60px;
+    border-radius: 0px;
+  }
+  
+  .hideScrollbar::-webkit-scrollbar {
+    // chrome opera safari
+    display: none;
+  }
+  
+  .hideScrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  html,
+body {
+  height: 100%;
+}
+
+.bg-purple {
+  background: rgb(48, 0, 50);
+}
+
+.bg-gray {
+  background: rgb(74, 74, 74);
+}
+
+.bg-blue {
+  background: rgb(50, 101, 196);
+}
+
+.bg-red {
+  background: rgb(196, 50, 53);
+}
+
+.private-message__message {
+  padding: 20px;
+  color: white;
+}
+
+.private-message__form__wrapper {
+  height: 110px;
+  display: flex
+}
+
+.private-message__submit {
+  align-self: middle;
+  border-radius: 0px;
+}
+
+.connection-list {
+  height: 500px;
+  background-color: #037EDC;
+  padding: 10px;
+}

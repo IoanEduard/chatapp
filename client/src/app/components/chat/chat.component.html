@@ -1,0 +1,57 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div *ngIf="rootChatOpen" class="text-white">
+        <div #scrollMe [scrollTop]="scrollMe.scrollHeight" class="hideScrollbar private-messages__wrapper">
+          <div *ngFor="let message of messages" class="private-message__item">
+            <img src="{{message.img}}" alt="" height="30" width="30" class="private-message__img">
+            <span class="private-message__message">{{message.message}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="rootChatOpen" class="tab">
+        <button type="button" class="btn btn-primary active chat-tab__main" (click)="selectMain()"
+          [disabled]="rootChatOpen">Main
+          Room</button>
+        <div *ngFor="let item of componentRefTabs; let i = index" class="chat-tab__item">
+          <button type="button" class="btn btn-secondary active chat-tab__main" (click)="openTab(i)"
+            [ngStyle]="{'background-color': item.component.instance.newMessage ? '#198754' : '#051F34' }">{{item.component.instance.tabName}}</button>
+          <button type="button" class="btn btn-secondary active chat-tab__main" (click)="destroyTab(i)"
+            [ngStyle]="{'background-color': item.component.instance.newMessage ? '#198754' : '#051F34' }">x</button>
+        </div>
+      </div>
+
+      <div *ngIf="rootChatOpen" class="text-white">
+          <app-message-box (messageOpenedEvent)="messageOpened($event)" (messageEvent)="sendMessage($event)"></app-message-box>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div *ngIf="rootChatOpen" class="text-white connection-list">
+        <p class="connection-list__username" (click)="openModal()">{{username}}</p>
+        <div *ngFor="let con of connections | keyvalue; let i = index">
+          <p class="display-flex" (click)="createNewPrivateMessageComponent(con.key, con.value)">{{con.key}}</p>
+        </div>
+      </div>
+
+      <!-- <button *ngIf="rootChatOpen" class="btn btn-dark full-width-btn">Create Group</button> -->
+      <div *ngIf="rootChatOpen" class="row justify-content-left">
+        <div class="col-sm-12 display-inline-flex">
+          <button class="btn btn-success full-width-btn" *ngIf="!(authService.isLoggedIn$ | async)"
+            (click)="openLogin()">Login</button>
+          <p class="px-2 full-width-btn" *ngIf="authService.isLoggedIn$ | async" (click)="logout()">Logout</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12" (openComponent)="openTab($event)">
+      <div class="tabs" #componentHolder>
+      </div>
+    </div>
+  </div>
+</div>

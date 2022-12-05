@@ -1,0 +1,21 @@
+.emoji-btn {
+    display: inline-block;
+    font-size: 25px;
+    background-color: transparent;
+    border-color: transparent;
+  }
+  
+  .emoji-list {
+    display: inline-flex;
+    font-size: 30px;
+    padding-right: 14px;
+  }
+
+  .private_message__textarea {
+    display: inline-block;
+    resize: none;
+    width: 90%;
+    vertical-align: top;
+    height: 60px;
+    border-radius: 0px;
+  }

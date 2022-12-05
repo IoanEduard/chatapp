@@ -1,0 +1,15 @@
+<form (ngSubmit)="sendMessage()" #chatForm="ngForm" class="private-message__form">
+    <div class="form-group">
+        <div class="emoji-list" *ngFor="let item of mapEmoji | keyvalue; let i = index">
+            <p emoji="{{item.key}}" (click)="insertEmojiInMessage(item.key, i)"></p>
+        </div>
+        <div style="height: 120px;">
+            <textarea class="private_message__textarea form-control" placeholder="Type a message" type="text"
+                name="textarea" [(ngModel)]="message" cols="110" (keyup)="editTextareaMessage()" (focus)="messageRead()"></textarea>
+            <button class="btn btn-primary h-50 private-message__submit" type="submit" id="sendmessage"
+                [disabled]="!chatForm.valid">
+                Send
+            </button>
+        </div>
+    </div>
+</form>
